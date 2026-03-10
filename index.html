@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Resume Builder</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>AI Resume Builder for BCA Students</h1>
+<button onclick="toggleMode()">Toggle Dark Mode</button>
+
+</header>
+
+<div class="container">
+
+<div class="form">
+
+<h2>Enter Your Details</h2>
+
+<input type="text" id="name" placeholder="Full Name">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="text" id="phone" placeholder="Phone">
+
+<textarea id="education" placeholder="Education"></textarea>
+
+<textarea id="projects" placeholder="Projects"></textarea>
+
+<h3>Upload Photo</h3>
+<input type="file" id="photo">
+
+<h3>Skills</h3>
+
+<input type="text" id="skill1" placeholder="Skill 1">
+<input type="number" id="level1" placeholder="Skill %">
+
+<input type="text" id="skill2" placeholder="Skill 2">
+<input type="number" id="level2" placeholder="Skill %">
+
+<input type="text" id="skill3" placeholder="Skill 3">
+<input type="number" id="level3" placeholder="Skill %">
+
+<button onclick="generateResume()">Generate Resume</button>
+
+<h3>Resume Strength</h3>
+<p id="strength"></p>
+
+<h3>AI Resume Analysis</h3>
+
+<p id="score"></p>
+
+<h4>Suggestions</h4>
+<ul id="suggestions"></ul>
+
+<hr>
+
+<h2>AI Career Detector</h2>
+
+<select id="subject">
+<option value="">Favorite Subject</option>
+<option value="programming">Programming</option>
+<option value="web">Web Development</option>
+<option value="network">Networking</option>
+<option value="data">Data Analysis</option>
+</select>
+
+<select id="coding">
+<option value="">Do you like coding?</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+<select id="design">
+<option value="">Do you like designing?</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+<select id="data">
+<option value="">Do you like working with data?</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+<button onclick="careerAI()">Get Career Suggestion</button>
+
+<p id="aiResult"></p>
+
+</div>
+
+<div class="preview">
+
+<h2>Resume Preview</h2>
+
+<div id="resume">
+
+<div class="resume-header">
+
+<img id="rphoto">
+
+<div>
+
+<h1 id="rname"></h1>
+<p id="remail"></p>
+<p id="rphone"></p>
+
+</div>
+
+</div>
+
+<hr>
+
+<h2>Career Objective</h2>
+<p>Seeking an opportunity to apply my BCA knowledge and grow in the IT industry.</p>
+
+<h2>Education</h2>
+<p id="reducation"></p>
+
+<h2>Technical Skills</h2>
+
+<p id="s1"></p>
+<div class="bar"><div id="bar1"></div></div>
+
+<p id="s2"></p>
+<div class="bar"><div id="bar2"></div></div>
+
+<p id="s3"></p>
+<div class="bar"><div id="bar3"></div></div>
+
+<h2>Projects</h2>
+<p id="rprojects"></p>
+
+<h2>Additional Skills</h2>
+<ul>
+<li>Communication Skills</li>
+<li>Team Work</li>
+<li>Quick Learner</li>
+</ul>
+
+<h2>QR Code</h2>
+<div id="qrcode"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

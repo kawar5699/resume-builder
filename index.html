@@ -1,132 +1,144 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <title>AI Resume Builder</title>
 
 <link rel="stylesheet" href="style.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
 </head>
 
 <body>
 
-<header>
+<button onclick="toggleMode()">🌙 Toggle Mode</button>
 
-<h1>AI Resume Builder for BCA Students</h1>
-<button onclick="toggleMode()">Toggle Dark Mode</button>
-
-</header>
+<h1>AI Resume Builder</h1>
 
 <div class="container">
 
 <div class="form">
 
-<h2>Enter Your Details</h2>
-
-<input type="text" id="name" placeholder="Full Name">
-
-<input type="email" id="email" placeholder="Email">
-
-<input type="text" id="phone" placeholder="Phone">
+<input id="name" placeholder="Full Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
 
 <textarea id="education" placeholder="Education"></textarea>
-
 <textarea id="projects" placeholder="Projects"></textarea>
 
-<h3>Upload Photo</h3>
-<input type="file" id="photo">
+<textarea id="certifications" placeholder="Certifications"></textarea>
+<textarea id="internships" placeholder="Internships"></textarea>
 
 <h3>Skills</h3>
 
-<input type="text" id="skill1" placeholder="Skill 1">
-<input type="number" id="level1" placeholder="Skill %">
+<h3>Technical Skills</h3>
+<input placeholder="e.g. Java, Python, HTML">
 
-<input type="text" id="skill2" placeholder="Skill 2">
-<input type="number" id="level2" placeholder="Skill %">
+<h3>Soft Skills</h3>
+<input placeholder="e.g. Communication, Teamwork">
 
-<input type="text" id="skill3" placeholder="Skill 3">
-<input type="number" id="level3" placeholder="Skill %">
+<h3>Other Skills / Activities</h3>
+<input placeholder="e.g. Leadership, Event Management">
+
+<input type="file" id="photo">
+
+<br><br>
+
+<select id="template">
+<option value="1">Template 1</option>
+<option value="2">Template 2</option>
+<option value="3">Template 3</option>
+</select>
+
+<br><br>
 
 <button onclick="generateResume()">Generate Resume</button>
-
-<h3>Resume Strength</h3>
-<p id="strength"></p>
-
-<h3>AI Resume Analysis</h3>
+<button onclick="downloadPDF()">Download PDF</button>
 
 <p id="score"></p>
 
-<h4>Suggestions</h4>
-<ul id="suggestions"></ul>
+<h3>AI Summary</h3>
+<textarea id="summary"></textarea>
+<button onclick="generateSummary()">Generate Summary</button>
 
 <hr>
 
-<h2>AI Career Detector</h2>
+<h2>AI Career Advisor</h2>
 
-<select id="subject">
-<option value="">Favorite Subject</option>
-<option value="programming">Programming</option>
-<option value="web">Web Development</option>
-<option value="network">Networking</option>
-<option value="data">Data Analysis</option>
-</select>
-
-<select id="coding">
-<option value="">Do you like coding?</option>
+<p>1. Do you like coding?</p>
+<select id="q1">
+<option value="">Select</option>
 <option value="yes">Yes</option>
 <option value="no">No</option>
 </select>
 
-<select id="design">
-<option value="">Do you like designing?</option>
+<p>2. Do you enjoy designing?</p>
+<select id="q2">
+<option value="">Select</option>
 <option value="yes">Yes</option>
 <option value="no">No</option>
 </select>
 
-<select id="data">
-<option value="">Do you like working with data?</option>
+<p>3. Do you like data?</p>
+<select id="q3">
+<option value="">Select</option>
 <option value="yes">Yes</option>
 <option value="no">No</option>
+</select>
+
+<p>4. Interested in networking/security?</p>
+<select id="q4">
+<option value="">Select</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+
+<p>5. Your strongest skill?</p>
+<select id="q5">
+<option value="">Select</option>
+<option value="logic">Logic</option>
+<option value="creative">Creative</option>
+<option value="analysis">Analysis</option>
 </select>
 
 <button onclick="careerAI()">Get Career Suggestion</button>
 
-<p id="aiResult"></p>
+<h3 id="careerResult"></h3>
 
 </div>
 
 <div class="preview">
 
-<h2>Resume Preview</h2>
+<div id="resumeCard" class="resume-card">
 
-<div id="resume">
-
-<div class="resume-header">
-
-<img id="rphoto">
-
+<div class="header">
+<img id="previewPhoto">
 <div>
-
-<h1 id="rname"></h1>
+<h2 id="rname"></h2>
 <p id="remail"></p>
 <p id="rphone"></p>
-
 </div>
-
 </div>
 
 <hr>
 
-<h2>Career Objective</h2>
-<p>Seeking an opportunity to apply my BCA knowledge and grow in the IT industry.</p>
+<h3>Summary</h3>
+<p id="rsummary"></p>
 
-<h2>Education</h2>
+<h3>Education</h3>
 <p id="reducation"></p>
 
-<h2>Technical Skills</h2>
+<h3>Projects</h3>
+<p id="rprojects"></p>
+
+<h3>Certifications</h3>
+<p id="rcert"></p>
+
+<h3>Internships</h3>
+<p id="rintern"></p>
+
+<h3>Skills</h3>
 
 <p id="s1"></p>
 <div class="bar"><div id="bar1"></div></div>
@@ -137,17 +149,7 @@
 <p id="s3"></p>
 <div class="bar"><div id="bar3"></div></div>
 
-<h2>Projects</h2>
-<p id="rprojects"></p>
-
-<h2>Additional Skills</h2>
-<ul>
-<li>Communication Skills</li>
-<li>Team Work</li>
-<li>Quick Learner</li>
-</ul>
-
-<h2>QR Code</h2>
+<h3>QR Code</h3>
 <div id="qrcode"></div>
 
 </div>

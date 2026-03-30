@@ -1,79 +1,56 @@
 body{
 font-family:Arial;
-margin:0;
-background:#f4f4f4;
-}
-
-header{
-background:#4A90E2;
-color:white;
+background:#f4f6fb;
 padding:20px;
-text-align:center;
 }
 
 .container{
 display:flex;
-padding:20px;
-gap:20px;
+gap:30px;
 }
 
-.form{
-width:40%;
-background:white;
-padding:20px;
-border-radius:10px;
-}
-
-.preview{
-width:60%;
-}
+.form{ width:40%; }
+.preview{ width:60%; }
 
 input,textarea,select{
 width:100%;
-padding:10px;
-margin:8px 0;
+margin:6px 0;
+padding:8px;
 }
 
-button{
-padding:10px;
-background:#4A90E2;
-color:white;
-border:none;
-cursor:pointer;
-}
-
-#resume{
+.resume-card{
 background:white;
-padding:30px;
+padding:20px;
 border-radius:10px;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+transition:transform 0.2s;
+transform-style:preserve-3d;
 }
 
-.resume-header{
+.header{
 display:flex;
+gap:15px;
 align-items:center;
-gap:20px;
 }
 
-.resume-header img{
-width:120px;
-height:120px;
+.header img{
+width:80px;
+height:80px;
 border-radius:50%;
-}
-
-h2{
-border-bottom:2px solid #4A90E2;
-padding-bottom:5px;
+object-fit:cover;
 }
 
 .bar{
 background:#ddd;
-height:10px;
+height:8px;
+border-radius:4px;
 margin-bottom:10px;
 }
 
 .bar div{
-background:#4A90E2;
-height:10px;
+background:#4CAF50;
+height:8px;
+border-radius:4px;
 }
 
 .dark{
@@ -81,24 +58,6 @@ background:#121212;
 color:white;
 }
 
-.dark #resume{
+.dark .resume-card{
 background:#1e1e1e;
-}
-
-.dark .form{
-background:#1e1e1e;
-}
-
-#score{
-font-size:18px;
-font-weight:bold;
-color:#2c3e50;
-}
-
-#suggestions{
-padding-left:20px;
-}
-
-#suggestions li{
-margin-bottom:5px;
 }
